@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html>             <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css", href="{% static  'entertainment_ml/main.css' %}">
+       {% if title %}
+            <title>{{title}}</title>
+        {% else %}
+            <title>Sentiment Analysis</title>
+        {% endif %}
+
+           <br>
+           <br>
+           <style>
+           body {
+                background-color: #5C873B;
+            }
+            textarea#ereview {
+    background: gray;
+}
+            </style>
+           <header>
+               <center>
+                    <h1 style="color:#00000;">Sentiment Analysis for IMDB Review</h1>
+                </center>
+            </header>
+           <br>
+           <br>
+            <body>
+            <center>
+                 <form method="POST" action="{% url 'entertainment-predict' %}">
+                     {% csrf_token %}
+                    <div class="col-lg-6">
+                         <div class="form-group">
+                             <textarea class="form-control" rows="7" id="review" name="review"></textarea>
+                        </div>
+                    </div>
+                     <br>
+                    <button type="submit" class="btn btn-dark btn-lg">Predict Sentiment</button>
+                 </form>
+           <br>
+           <br>
+            {% if result == "Review is Negative" %}
+            <h2 style="color:#EB1313";>{{ result }} </h2>
+            {% elif  result == "Review is Somewhat Negative" %}
+             <h2 style="color:#DD5D00";>{{ result }} </h2>
+            {% elif  result == "Review is Neutral" %}
+             <h2 style="color:#F4D03F";>{{ result }} </h2>
+            {% elif  result == "Review is Somewhat Positive" %}
+             <h2 style="color:#30BF6C";>{{ result }} </h2>
+            {% elif  result == "Review is Positive" %}
+             <h2 style="color:#00FF6B";>{{ result }} </h2>
+            {% endif %}
+       </center>
+        </body>
+         <!-- Footer -->
+        <div class='footer'>
+            <center>
+                <div class="contact">
+                    <a target="_blank" href="https://github.com/ShanmugapriyanSP"><i class="fab fa-github fa-lg contact-icon" style="font-size:48px;color:black"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target="_blank" href="https://www.linkedin.com/in/shanmugapriyan-k-489b36122/"><i class="fab fa-linkedin fa-lg contact-icon" style="font-size:48px;color:#0066ff"></i></a>
+                </div>
+                <br>
+                <br>
+                <p class='footer-description'>Made by Shanmugapriyan</p>
+            </center>
+        </div>
+
+ <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>
+
