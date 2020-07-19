@@ -1,4 +1,4 @@
 # Entertainment-ML
 
 
-![png](readme-resources/WebSite-Heroku.PNG)
+![png](readme-resources/entertainment_ml.PNG)
